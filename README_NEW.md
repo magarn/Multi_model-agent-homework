@@ -154,10 +154,12 @@ python main.py add-paper transformer.pdf --topics "CV,DeepLearning"
 python main.py add-paper bert.pdf --topics "NLP,Transformer"
 ```
 
+![添加论文示例](./pics/image0.png)
+
 #### 2. 语义搜索论文
 
 ```bash
-python main.py search-paper "Transformer的核心架构是什么"
+python main.py search-paper "What is the core architecture of a Transformer?"
 ```
 
 **可选参数**:
@@ -166,10 +168,10 @@ python main.py search-paper "Transformer的核心架构是什么"
 **示例**:
 ```bash
 # 搜索关于注意力机制的论文
-python main.py search-paper "注意力机制的原理和应用"
+python main.py search-paper "The Principles and Applications of Attention Mechanisms"
 
 # 返回前 10 个最相关的结果
-python main.py search-paper "深度学习" --top-k 10
+python main.py search-paper "Deep Learning" --top-k 10
 ```
 
 **输出示例**:
@@ -182,6 +184,8 @@ python main.py search-paper "深度学习" --top-k 10
    相似度: 0.856
    摘要: Transformer is a model architecture eschewing recurrence...
 ```
+
+![搜索论文示例](./pics/image5.png)
 
 #### 3. 批量整理文件夹
 
@@ -203,6 +207,8 @@ python main.py organize-papers ./paper --topics "CV,NLP,RL,ML"
 python main.py organize-papers "C:\Users\Documents\Papers" --topics "CV,NLP"
 ```
 
+![批量整理论文示例](./pics/image6.png)
+
 #### 4. 列出论文文件
 
 ```bash
@@ -210,8 +216,10 @@ python main.py organize-papers "C:\Users\Documents\Papers" --topics "CV,NLP"
 python main.py list-papers
 
 # 根据查询列出相关文件
-python main.py list-papers --query "深度学习"
+python main.py list-papers --query "deep learning"
 ```
+
+![列出论文示例](./pics/image4.png)
 
 ---
 
@@ -231,10 +239,12 @@ python main.py add-image sunset.jpg
 python main.py add-image landscape.png
 ```
 
+![添加图像示例](./pics/image3.png)
+
 #### 2. 以文搜图
 
 ```bash
-python main.py search-image "海边的日落"
+python main.py search-image "Sunset by the Sea"
 ```
 
 **可选参数**:
@@ -243,31 +253,35 @@ python main.py search-image "海边的日落"
 **示例**:
 ```bash
 # 搜索日落相关的图片
-python main.py search-image "海边的日落"
+python main.py search-image "Sunset by the Sea"
 
 # 搜索动物相关的图片
-python main.py search-image "可爱的小猫"
+python main.py search-image "A cute dog"
 
 # 返回前 10 个最相关的结果
-python main.py search-image "风景" --top-k 10
+python main.py search-image "landscape" --top-k 10
 ```
+
+![以文搜图示例](./pics/image4.png)
 
 #### 3. 批量索引外部文件夹
 
 ```bash
-python main.py index-images ./photos
+python main.py index-images ./images
 ```
 
 **功能**: 扫描指定文件夹中的所有图像文件并生成索引
 
 **示例**:
 ```bash
-# 索引当前目录下的 photos 文件夹
-python main.py index-images ./photos
+# 索引当前目录下的 images 文件夹
+python main.py index-images ./images
 
 # 索引绝对路径的文件夹
 python main.py index-images "C:\Users\Pictures\Vacation"
 ```
+
+![批量索引图像示例](./pics/image7.png)
 
 #### 4. 批量处理 images 目录 ⭐
 
@@ -314,10 +328,13 @@ python main.py process-images -r
 python main.py organize-papers test_papers --topics "CV,NLP,ML"
 ```
 
+
 3. **搜索论文**:
 ```bash
-python main.py search-paper "深度学习"
+python main.py search-paper "Deep Learning"
 ```
+
+![快速开始-搜索论文](./pics/image8.png)
 
 ### 测试图像管理功能
 
@@ -330,14 +347,17 @@ python main.py process-images
 
 3. **以文搜图**:
 ```bash
-python main.py search-image "风景"
+python main.py search-image "landscape"
 ```
+
 
 ### 查看所有命令
 
 ```bash
 python main.py --help
 ```
+
+![帮助信息示例](./pics/image9.png)
 
 查看特定命令的详细帮助：
 ```bash

@@ -189,7 +189,7 @@ python main.py organize-papers "C:\Users\Documents\Papers" --topics "CV,NLP"
 python main.py list-papers
 
 # 根据查询列出相关文件
-python main.py list-papers --query "深度学习"
+python main.py list-papers --query "deep learning"
 ```
 
 **参数说明**:
