@@ -1,58 +1,94 @@
-# 本地 AI 智能文献与图像管理助手 (Local Multimodal AI Agent)
+# 📚 本地 AI 智能文献与图像管理助手
 
-## 1. 项目简介 (Project Introduction)
-本项目是一个基于 Python 的本地多模态 AI 智能助手，旨在解决本地大量文献和图像素材管理困难的问题。不同于传统的文件名搜索，本项目利用多模态神经网络技术，实现对内容的**语义搜索**和**自动分类**。本项目可以帮助各位同学理解多模态大模型的实际应用，并且可以在实际日常学习生活中帮助各位同学管理自己的本地知识库。希望各位同学可以不局限于本次作业规定的内容，通过自己的构建、扩展和维护实现自己的本地AI助手。
+<div align="center">
 
-项目可使用本地化部署，也可以调用云端大模型 API 以获得更强的性能。
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
-## 2. 核心功能要求 (Core Features)
+**基于多模态 AI 的本地知识库智能管理系统**
 
-### 2.1 智能文献管理
-*   **语义搜索**: 支持使用自然语言提问（如“Transformer 的核心架构是什么？”）。系统需基于语义理解返回最相关的论文文件，进阶要求可返回具体的论文片段或页码。
-*   **自动分类与整理**:
-    *   **单文件处理**: 添加新论文时，根据指定的主题（如 "CV, NLP, RL"）自动分析内容，将其归类并移动到对应的子文件夹中。
-    *   **批量整理**: 支持对现有的混乱文件夹进行“一键整理”，自动扫描所有 PDF，识别主题并归档到相应目录。
-*   **文件索引**: 支持仅返回相关文件列表，方便快速定位所需文献。
+[功能特性](#-核心功能) • [快速开始](#-快速开始) • [使用文档](#-使用说明) • [技术栈](#-技术栈)
 
-### 2.2 智能图像管理
-*   **以文搜图**: 利用多模态图文匹配技术，支持通过自然语言描述（如“海边的日落”）来查找本地图片库中最匹配的图像。
+[![GitHub Stars](https://img.shields.io/github/stars/yourusername/your-repo?style=social)](https://github.com/magarn/Multi_model-agent-homework)
+[![GitHub Forks](https://img.shields.io/github/forks/yourusername/your-repo?style=social)](https://github.com/magarn/Multi_model-agent-homework)
 
-## 3. 技术选型与模型建议 (Technical Stack)
+</div>
 
-本项目采用模块化设计，支持替换不同的后端模型。学生可根据自身硬件条件选择本地部署或调用云端 API（如 Gemini, GPT-4o 等）。
+---
 
-### 3.1 推荐配置 (轻量级/本地化)
-*   **文本嵌入**: `SentenceTransformers` (如 `all-MiniLM-L6-v2`) —— 速度快，内存占用小。
-*   **图像嵌入**: `CLIP` (如 `ViT-B-32`) —— OpenAI 开源的经典图文匹配模型。
-*   **向量数据库**: `ChromaDB` —— 无需服务器，开箱即用的嵌入式数据库。
+## 📖 项目简介
 
-### 3.2 进阶配置建议 (高性能/多功能)
-如果您拥有较好的硬件资源（如 NVIDIA GPU），可以尝试以下方案：
+本项目是一个基于 Python 的**本地多模态 AI 智能助手**，旨在解决本地大量文献和图像素材管理困难的问题。不同于传统的文件名搜索，本项目利用多模态神经网络技术，实现对内容的**语义搜索**和**自动分类**。
 
-*   **图像描述与问答**:
-    *   **Florence-2 (Microsoft)**: 轻量级全能视觉模型，支持 OCR、检测、描述。
-    *   **Moondream**: 专为边缘设备设计的小型视觉语言模型。
-    *   **LLaVA**: 开源多模态大模型，支持复杂的图文对话。
-*   **文本理解**:
-    *   **本地 LLM**: 如 `Llama-3` 或 `Qwen-2` (通过 Ollama 部署)，实现更精准的分类。
+### ✨ 核心优势
 
-## 4. 环境要求 (Environment)
+- 🔍 **语义搜索**：使用自然语言提问，无需记忆文件名
+- 🤖 **智能分类**：自动识别内容主题并分类整理
+- 🖼️ **图文匹配**：通过文字描述搜索相关图像
+- 🔒 **完全本地化**：所有数据存储在本地，保护隐私
+- ⚡ **轻量高效**：支持 CPU 运行，可选 GPU 加速
 
-*   **操作系统**: Windows / macOS / Linux
-*   **Python 版本**: 建议 Python 3.8 及以上
-*   **内存**: 建议 8GB 及以上
+---
 
-## 5. 安装与配置 (Installation & Configuration)
+## 🚀 核心功能
 
-### 5.1 依赖安装
+### 📄 智能文献管理
 
-1. 克隆或下载项目到本地：
+| 功能 | 描述 |
+|------|------|
+| **语义搜索** | 使用自然语言提问（如"Transformer 的核心架构是什么？"），系统基于语义理解返回最相关的论文文件 |
+| **自动分类** | 添加新论文时，根据指定主题（如 "CV, NLP, RL"）自动分析内容并归类到对应文件夹 |
+| **批量整理** | 一键整理混乱文件夹，自动扫描所有 PDF，识别主题并归档到相应目录 |
+| **文件索引** | 快速返回相关文件列表，方便定位所需文献 |
+
+### 🖼️ 智能图像管理
+
+| 功能 | 描述 |
+|------|------|
+| **以文搜图** | 通过自然语言描述（如"海边的日落"）查找本地图片库中最匹配的图像 |
+| **批量处理** | 支持批量索引和处理图像文件，自动跳过已处理文件 |
+| **递归扫描** | 支持递归处理子目录中的所有图像文件 |
+
+---
+
+## 🛠️ 技术栈
+
+### 核心技术
+
+<div align="center">
+
+| 模块 | 技术选型 | 说明 |
+|------|---------|------|
+| **文本嵌入** | `SentenceTransformers` (all-MiniLM-L6-v2) | 轻量级，速度快，支持多语言 |
+| **图像嵌入** | `CLIP` (ViT-B-32) | OpenAI 开源经典图文匹配模型 |
+| **向量数据库** | `ChromaDB` | 嵌入式数据库，无需服务器 |
+| **PDF 处理** | `pdfplumber` + `PyPDF2` | 高精度文本提取 |
+| **命令行** | `Click` | 友好的 CLI 界面 |
+
+</div>
+
+### 系统要求
+
+- **操作系统**: Windows / macOS / Linux
+- **Python 版本**: Python 3.8 及以上
+- **内存**: 建议 8GB 及以上
+- **存储空间**: 模型文件约 700MB
+
+---
+
+## 📦 安装与配置
+
+### 1. 克隆项目
+
 ```bash
-git clone <your-repo-url>
+# 替换为您的 GitHub 仓库地址
+git clone https://github.com/yourusername/your-repo.git
 cd agent
 ```
 
-2. 创建虚拟环境（推荐）：
+### 2. 创建虚拟环境（推荐）
+
 ```bash
 # Windows
 python -m venv venv
@@ -63,84 +99,82 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. 安装依赖包：
+### 3. 安装依赖
+
 ```bash
 pip install -r requirements.txt
 ```
 
-**注意**: 首次运行时，程序会自动下载所需的模型文件（约几百MB），请确保网络连接正常。
+> 💡 **提示**: 首次运行时，程序会自动下载所需的模型文件（约 700MB），请确保网络连接正常。
 
-### 5.2 项目结构
+---
+
+## 🏗️ 项目结构
 
 ```
 agent/
 ├── main.py                 # 统一入口文件
 ├── requirements.txt        # 依赖包列表
 ├── README.md              # 项目说明文档
+├── QUICKSTART.md          # 快速开始指南
 ├── src/                   # 源代码目录
 │   ├── __init__.py
 │   ├── document_manager.py    # 文献管理模块
 │   └── image_manager.py       # 图像管理模块
-└── data/                  # 数据目录（自动创建）
-    ├── documents/         # 文献存储目录
-    ├── images/            # 图像存储目录
-    └── chroma_db/         # 向量数据库存储目录
+├── data/                  # 数据目录（自动创建）
+│   ├── documents/         # 文献存储目录
+│   ├── images/            # 图像存储目录
+│   └── chroma_db/         # 向量数据库存储目录
+└── images/                # 待处理图像目录（与 data 同级）
 ```
 
-## 6. 使用说明 (Usage)
+---
 
-### 6.1 文献管理功能
+## 📚 使用说明
 
-#### 6.1.1 添加并分类单个论文
+### 📄 文献管理
 
-添加一个PDF文件，并根据指定主题自动分类：
+#### 1. 添加并分类单个论文
 
 ```bash
 python main.py add-paper paper.pdf --topics "CV,NLP,RL"
 ```
 
-**参数说明**:
-- `paper.pdf`: PDF文件路径（可以是相对路径或绝对路径）
-- `--topics`: 主题列表，用逗号分隔，如 "CV,NLP,RL"
-
-**功能**: 
-- 提取PDF文本内容
-- 生成语义嵌入向量并存储到向量数据库
-- 根据主题关键词自动分类并移动到对应子文件夹（`data/documents/CV/`、`data/documents/NLP/` 等）
+**功能**:
+- 提取 PDF 文本内容
+- 生成语义嵌入向量并存储
+- 根据主题自动分类到对应子文件夹
 
 **示例**:
 ```bash
-# 添加一篇关于计算机视觉的论文
+# 添加计算机视觉相关论文
 python main.py add-paper transformer.pdf --topics "CV,DeepLearning"
 
-# 添加一篇关于自然语言处理的论文
+# 添加自然语言处理相关论文
 python main.py add-paper bert.pdf --topics "NLP,Transformer"
 ```
 
-#### 6.1.2 语义搜索论文
+![添加论文示例](./pics/image0.png)
 
-使用自然语言查询搜索相关论文：
+#### 2. 语义搜索论文
 
 ```bash
 python main.py search-paper "What is the core architecture of a Transformer?"
 ```
 
-**参数说明**:
-- `"What is the core architecture of a Transformer?"`: 搜索查询（自然语言）
-
 **可选参数**:
-- `--top-k` 或 `-k`: 返回最相关的k个结果（默认5个）
+- `--top-k` 或 `-k`: 返回最相关的 k 个结果（默认 5 个）
 
 **示例**:
 ```bash
 # 搜索关于注意力机制的论文
 python main.py search-paper "The Principles and Applications of Attention Mechanisms"
 
-# 返回前10个最相关的结果
+# 返回前 10 个最相关的结果
 python main.py search-paper "Deep Learning" --top-k 10
 ```
 
-**输出格式**:
+**输出示例**:
 ```
 找到 5 篇相关论文:
 
@@ -148,41 +182,34 @@ python main.py search-paper "Deep Learning" --top-k 10
    路径: data/documents/CV/transformer.pdf
    主题: CV,DeepLearning
    相似度: 0.856
-   摘要: Transformer is a model architecture eschewing recurrence and relying entirely on attention mechanisms...
-
-2. bert.pdf
-   ...
+   摘要: Transformer is a model architecture eschewing recurrence...
 ```
 
-#### 6.1.3 批量整理文件夹
+![搜索论文示例](./pics/image5.png)
 
-对现有文件夹中的所有PDF文件进行批量整理和分类：
+#### 3. 批量整理文件夹
 
 ```bash
 python main.py organize-papers ./paper --topics "CV,NLP,RL"
 ```
 
-**参数说明**:
-- `./paper`: 源文件夹路径（包含待整理的PDF文件）
-- `--topics`: 主题列表，用逗号分隔
-
 **功能**:
-- 扫描指定文件夹中的所有PDF文件
+- 扫描指定文件夹中的所有 PDF 文件
 - 自动提取文本并生成索引
 - 根据内容匹配主题并分类到对应目录
 
 **示例**:
 ```bash
-# 整理当前目录下的papers文件夹
+# 整理当前目录下的 papers 文件夹
 python main.py organize-papers ./paper --topics "CV,NLP,RL,ML"
 
 # 整理绝对路径的文件夹
 python main.py organize-papers "C:\Users\Documents\Papers" --topics "CV,NLP"
 ```
 
-#### 6.1.4 列出论文文件
+![批量整理论文示例](./pics/image6.png)
 
-列出所有已索引的论文文件，或根据查询返回相关文件列表：
+#### 4. 列出论文文件
 
 ```bash
 # 列出所有文件
@@ -192,57 +219,36 @@ python main.py list-papers
 python main.py list-papers --query "deep learning"
 ```
 
-**参数说明**:
-- `--query` 或 `-q`: 可选的搜索查询，如果提供则只返回相关文件
+![列出论文示例](./pics/image4.png)
 
-**示例**:
-```bash
-# 列出所有已索引的论文
-python main.py list-papers
+---
 
-# 列出与"Transformer"相关的论文
-python main.py list-papers --query "Transformer"
-```
+### 🖼️ 图像管理
 
-### 6.2 图像管理功能
-
-#### 6.2.1 添加并索引图像
-
-添加单个图像文件到索引库：
+#### 1. 添加并索引图像
 
 ```bash
 python main.py add-image photo.jpg
 ```
 
-**参数说明**:
-- `photo.jpg`: 图像文件路径（支持 jpg, jpeg, png, bmp, gif, webp 格式）
-
-**功能**:
-- 加载图像并生成CLIP嵌入向量
-- 存储到向量数据库以供后续搜索
+**支持的格式**: jpg, jpeg, png, bmp, gif, webp
 
 **示例**:
 ```bash
-# 添加单张图片
 python main.py add-image sunset.jpg
-
-# 添加PNG格式图片
 python main.py add-image landscape.png
 ```
 
-#### 6.2.2 以文搜图
+![添加图像示例](./pics/image3.png)
 
-通过自然语言描述搜索相关图像：
+#### 2. 以文搜图
 
 ```bash
-python main.py search-image "海边的日落"
+python main.py search-image "Sunset by the Sea"
 ```
 
-**参数说明**:
-- `"海边的日落"`: 文本查询（自然语言描述）
-
 **可选参数**:
-- `--top-k` 或 `-k`: 返回最相关的k个结果（默认5个）
+- `--top-k` 或 `-k`: 返回最相关的 k 个结果（默认 5 个）
 
 **示例**:
 ```bash
@@ -250,66 +256,47 @@ python main.py search-image "海边的日落"
 python main.py search-image "Sunset by the Sea"
 
 # 搜索动物相关的图片
-python main.py search-image "tiger"
-python main.py search-image "The Snake by the Sea"
+python main.py search-image "A cute dog"
 
-# 返回前10个最相关的结果
-python main.py search-image "Landscape" --top-k 10
+# 返回前 10 个最相关的结果
+python main.py search-image "landscape" --top-k 10
 ```
 
-**输出格式**:
-```
-找到 5 张相关图像:
+![以文搜图示例](./pics/image4.png)
 
-1. sunset.jpg
-   路径: data/images/sunset.jpg
-   相似度: 0.923
-
-2. beach.jpg
-   ...
-```
-
-#### 6.2.3 批量索引图像
-
-批量索引文件夹中的所有图像：
+#### 3. 批量索引外部文件夹
 
 ```bash
 python main.py index-images ./images
 ```
 
-**参数说明**:
-- `./images`: 源文件夹路径（包含待索引的图像文件）
-
-**功能**:
-- 扫描指定文件夹中的所有图像文件（jpg, jpeg, png, bmp, gif, webp）
-- 自动生成嵌入向量并存储到向量数据库
+**功能**: 扫描指定文件夹中的所有图像文件并生成索引
 
 **示例**:
 ```bash
-# 索引当前目录下的photos文件夹
+# 索引当前目录下的 images 文件夹
 python main.py index-images ./images
 
 # 索引绝对路径的文件夹
 python main.py index-images "C:\Users\Pictures\Vacation"
 ```
 
-#### 6.2.4 批量处理 data/images 目录
+![批量索引图像示例](./pics/image7.png)
 
-批量处理 `./images` 目录中的所有图像文件（包括子目录）：
+#### 4. 批量处理 images 目录 ⭐
 
 ```bash
 python main.py process-images
 ```
 
+**功能**:
+- 自动扫描 `./images` 目录下的所有图像文件（包括子目录）
+- 自动跳过已经索引的文件，只处理新文件
+- 支持递归处理所有子目录
+
 **参数说明**:
 - `--recursive` 或 `-r`: 是否递归处理子目录（默认启用）
 - `--no-recursive`: 只处理根目录，不递归子目录
-
-**功能**:
-- 自动扫描 `./images` 目录下的所有图像文件
-- 自动跳过已经索引的文件，只处理新文件
-- 支持递归处理所有子目录
-- 自动生成嵌入向量并存储到向量数据库
 
 **示例**:
 ```bash
@@ -324,163 +311,165 @@ python main.py process-images -r
 ```
 
 **使用场景**:
-- 当你将图像文件直接放入 `data/images` 目录后，可以使用此命令批量索引
+- 将图像文件直接放入 `./images` 目录后，使用此命令批量索引
 - 适合定期批量处理新增的图像文件
 - 自动跳过已索引的文件，避免重复处理
 
-### 6.3 查看帮助信息
+---
 
-查看所有可用命令：
+## 🎯 快速开始
+
+### 测试文献管理功能
+
+1. **准备测试文件**: 将一些 PDF 论文文件放在一个文件夹中，例如 `test_papers/`
+
+2. **批量整理论文**:
+```bash
+python main.py organize-papers test_papers --topics "CV,NLP,ML"
+```
+
+
+3. **搜索论文**:
+```bash
+python main.py search-paper "Deep Learning"
+```
+
+![快速开始-搜索论文](./pics/image8.png)
+
+### 测试图像管理功能
+
+1. **准备测试文件**: 将图片文件放入 `./images/` 目录（可包含子目录）
+
+2. **批量处理图像**:
+```bash
+python main.py process-images
+```
+
+3. **以文搜图**:
+```bash
+python main.py search-image "landscape"
+```
+
+
+### 查看所有命令
 
 ```bash
 python main.py --help
 ```
 
-查看特定命令的详细帮助：
+![帮助信息示例](./pics/image9.png)
 
+查看特定命令的详细帮助：
 ```bash
 python main.py add-paper --help
 python main.py search-paper --help
 python main.py search-image --help
 ```
 
-## 7. 技术选型说明 (Technical Stack Details)
+---
 
-本项目采用以下技术栈：
+## ⚙️ 高级配置
 
-### 7.1 文本处理
-- **SentenceTransformers (all-MiniLM-L6-v2)**: 
-  - 轻量级文本嵌入模型，速度快，内存占用小
-  - 支持多语言，适合中文和英文文献
-  - 模型大小约80MB，首次运行会自动下载
+### GPU 加速
 
-### 7.2 图像处理
-- **CLIP (ViT-B-32)**: 
-  - OpenAI开源的经典图文匹配模型
-  - 支持通过文本描述搜索图像
-  - 模型大小约600MB，首次运行会自动下载
+如果有 NVIDIA GPU，可以安装 GPU 版本的 PyTorch 以加速模型推理：
 
-### 7.3 向量数据库
-- **ChromaDB**: 
-  - 嵌入式向量数据库，无需单独部署服务器
-  - 支持持久化存储，数据保存在本地
-  - 使用余弦相似度进行语义搜索
+```bash
+# CUDA 11.8
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-### 7.4 PDF处理
-- **pdfplumber**: 主要PDF文本提取工具，提取准确度高
-- **PyPDF2**: 备用PDF处理库，作为fallback方案
+# CUDA 12.1
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
 
-### 7.5 命令行接口
-- **Click**: Python命令行工具库，提供友好的CLI界面
+### 进阶模型配置
 
-## 8. 注意事项 (Notes)
+如果您拥有较好的硬件资源，可以尝试以下方案：
 
-1. **首次运行**: 首次运行时会自动下载模型文件，请确保网络连接正常，下载时间取决于网络速度。
+- **图像描述与问答**:
+  - **Florence-2 (Microsoft)**: 轻量级全能视觉模型
+  - **Moondream**: 专为边缘设备设计的小型视觉语言模型
+  - **LLaVA**: 开源多模态大模型
 
-2. **存储空间**: 
-   - 模型文件约占用700MB磁盘空间
-   - 向量数据库会根据索引的文件数量增长
-
-3. **性能优化**:
-   - 如果有NVIDIA GPU，可以安装GPU版本的PyTorch以加速模型推理
-   - 对于大量文件，建议分批处理
-
-4. **文件格式支持**:
-   - 文献: 仅支持PDF格式
-   - 图像: 支持 jpg, jpeg, png, bmp, gif, webp 格式
-
-5. **数据安全**: 所有数据（文献、图像、向量索引）都存储在本地，不会上传到云端。
-
-## 9. 作业提交要求 (Submission Guidelines)
-
-为规范作业提交与评测流程，请严格按照以下要求提交：
-
-### 5.1 代码提交
-*   **GitHub 仓库**: 将完整项目代码上传至 GitHub 个人仓库，并提交仓库链接。
-*   **README 文档**: 仓库首页必须包含详细的 `README.md`，内容包括：
-    *   项目简介与核心功能列表。
-    *   环境配置与依赖安装说明。
-    *   **详细的使用说明**（包含具体的命令行示例）。
-    *   技术选型说明（使用了哪些模型、数据库等）。
-
-### 5.2 评测接口规范
-*   **统一入口**: 项目根目录下必须包含 `main.py` 文件。
-*   **一键调用**: 必须支持通过命令行参数调用核心功能。参考格式如下（不仅限于此）：
-    *   添加/分类论文: `python main.py add-paper <path> --topics "Topic1,Topic2"`
-    *   搜索论文: `python main.py search-paper <query>`
-    *   以文搜图: `python main.py search-image <query>`
-
-### 5.3 演示文档
-请提交一份 PDF 格式的演示报告（或直接包含在 README 中），内容需包括：
-*   **运行截图**: 关键功能的运行结果截图（如搜索结果、分类后的文件夹结构）。
-*   **演示视频 (可选)**: 录制一段屏幕录像，演示从环境启动到功能使用的全过程。
+- **文本理解**:
+  - **本地 LLM**: 如 `Llama-3` 或 `Qwen-2` (通过 Ollama 部署)
 
 ---
 
-# Local Multimodal AI Agent (English Version)
+## 📝 注意事项
 
-## 1. Project Introduction
-This project is a Python-based local multimodal AI assistant designed to solve the difficulty of managing large collections of local documents and images. Unlike traditional filename-based searches, this project utilizes multimodal neural network technology to achieve **semantic search** and **automatic classification** of content.
+1. **首次运行**: 首次运行时会自动下载模型文件，请确保网络连接正常
 
-The project is designed to be flexible, supporting both fully offline local deployment (for privacy) and cloud-based large model API integration for enhanced performance.
+2. **存储空间**: 
+   - 模型文件约占用 700MB 磁盘空间
+   - 向量数据库会根据索引的文件数量增长
 
-## 2. Core Features
+3. **性能优化**:
+   - 如果有 NVIDIA GPU，可以安装 GPU 版本的 PyTorch 以加速模型推理
+   - 对于大量文件，建议分批处理
 
-### 2.1 Intelligent Document Management
-*   **Semantic Search**: Supports natural language queries (e.g., "What is the core architecture of Transformer?"). The system should return the most relevant paper documents based on semantic understanding. Advanced implementations can return specific snippets or page numbers.
-*   **Automatic Classification & Organization**:
-    *   **Single File Processing**: When adding a new paper, the system automatically analyzes the content based on specified topics (e.g., "CV, NLP, RL") and moves it to the corresponding subfolder.
-    *   **Batch Organization**: Supports "one-click organization" for existing messy folders, automatically scanning all PDFs, identifying topics, and archiving them into appropriate directories.
-*   **File Indexing**: Supports returning only a list of relevant files for quick location.
+4. **文件格式支持**:
+   - 文献: 仅支持 PDF 格式
+   - 图像: 支持 jpg, jpeg, png, bmp, gif, webp 格式
 
-### 2.2 Intelligent Image Management
-*   **Text-to-Image Search**: Utilizes multimodal text-image matching technology to allow users to find the best-matching images in the local library using natural language descriptions (e.g., "sunset by the sea").
+5. **数据安全**: 所有数据（文献、图像、向量索引）都存储在本地，不会上传到云端
 
-## 3. Technical Stack & Recommendations
+---
 
-This project adopts a modular design, allowing for the replacement of different backend models. Students can choose between local deployment or calling cloud APIs (such as Gemini, GPT-4o) based on their hardware conditions.
+## 🤝 贡献
 
-### 3.1 Recommended Configuration (Lightweight/Local)
-*   **Text Embedding**: `SentenceTransformers` (e.g., `all-MiniLM-L6-v2`) — Fast speed, low memory usage.
-*   **Image Embedding**: `CLIP` (e.g., `ViT-B-32`) — OpenAI's classic open-source text-image matching model.
-*   **Vector Database**: `ChromaDB` — Serverless, out-of-the-box embedded database.
+欢迎提交 Issue 和 Pull Request！
 
-### 3.2 Advanced Configuration (High Performance)
-If you have better hardware resources (such as NVIDIA GPUs), consider the following options:
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b magarn/Multi_model-agent-homework`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin magarn/Multi_model-agent-homework`)
+5. 开启 Pull Request
 
-*   **Image Captioning & QA**:
-    *   **Florence-2 (Microsoft)**: Lightweight yet powerful vision model supporting OCR, detection, and captioning.
-    *   **Moondream**: Small vision-language model designed for edge devices.
-    *   **LLaVA**: Open-source multimodal large model supporting complex image-text dialogue.
-*   **Text Understanding**:
-    *   **Local LLM**: Such as `Llama-3` or `Qwen-2` (deployed via Ollama) for more precise classification.
+---
 
-## 4. Environment Requirements
+## 📄 许可证
 
-*   **OS**: Windows / macOS / Linux
-*   **Python Version**: Recommended Python 3.8+
-*   **Memory**: Recommended 8GB+ (for loading basic Embedding models)
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
 
-## 10. Submission Guidelines
+---
 
-To standardize the submission and evaluation process, please strictly follow these requirements:
+## 👨‍💻 作者
 
-### 5.1 Code Submission
-*   **GitHub Repository**: Upload the complete project code to a personal GitHub repository and submit the link.
-*   **README**: The repository homepage must include a detailed `README.md` containing:
-    *   Project introduction and core feature list.
-    *   Environment configuration and dependency installation instructions.
-    *   **Detailed usage instructions** (including specific command-line examples).
-    *   Technical stack explanation (models, databases used, etc.).
+**Your Name**
 
-### 5.2 Evaluation Interface Specification
-*   **Unified Entry Point**: The project root directory must contain a `main.py` file.
-*   **One-Click Execution**: Core features must be callable via command-line arguments. Reference format (not limited to):
-    *   Add/Classify Paper: `python main.py add-paper <path> --topics "Topic1,Topic2"`
-    *   Search Paper: `python main.py search-paper <query>`
-    *   Search Image: `python main.py search-image <query>`
+- GitHub: [magarn](https://github.com/magarn)
+- Email: 2095164803@qq.com
 
-### 5.3 Demonstration Documentation
-Please submit a PDF demonstration report (or include it in the README), which must include:
-*   **Screenshots**: Screenshots of key function results (e.g., search results, folder structure after classification).
-*   **Demo Video (Optional)**: Record a screen capture video demonstrating the entire process from environment startup to feature usage.
+---
+
+## 🙏 致谢
+
+- [SentenceTransformers](https://www.sbert.net/) - 文本嵌入模型
+- [CLIP](https://github.com/openai/CLIP) - 图文匹配模型
+- [ChromaDB](https://www.trychroma.com/) - 向量数据库
+- [Click](https://click.palletsprojects.com/) - 命令行工具
+
+---
+
+## 📊 项目统计
+
+<div align="center">
+
+![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/your-repo)
+![GitHub language count](https://img.shields.io/github/languages/count/yourusername/your-repo)
+![GitHub top language](https://img.shields.io/github/languages/top/yourusername/your-repo)
+![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/your-repo)
+
+</div>
+
+---
+
+<div align="center">
+
+**如果这个项目对您有帮助，请给一个 ⭐ Star！**
+
+Made with ❤️ by [Your Name](https://github.com/yourusername)
+
+</div>
+
